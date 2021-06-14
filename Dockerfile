@@ -38,5 +38,4 @@ USER nobody
 # VOLUME to allow persistence / access of raw database files
 #VOLUME /dynamodb_data
 
-#ENTRYPOINT ["/usr/local/openjdk-8/bin/java", "-Djava.library.path=./DynamoDBLocal_lib", "-jar", "DynamoDBLocal.jar"]
-RUN /usr/local/openjdk-8/bin/java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar
+ENTRYPOINT ["/usr/local/openjdk-8/bin/java", "-Djava.library.path=./DynamoDBLocal_lib", "-jar", "DynamoDBLocal.jar"]
