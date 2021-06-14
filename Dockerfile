@@ -34,8 +34,12 @@ RUN apt-get update && \
     apt-get clean
 
 RUN mkdir -p /dynamodb_data && chown nobody:nogroup /dynamodb_data && chmod 0750 /dynamodb_data
-USER nobody
+RUN chmod ugo+rwx DynamoDBLocal.jar
+RUN chmod -R ugo+rwx DynamoDBLocal_lib
+
 # VOLUME to allow persistence / access of raw database files
-VOLUME /dynamodb_data
-ENTRYPOINT ["/usr/local/openjdk-8/bin/java", "-Djava.library.path=./DynamoDBLocal_lib", "-jar", "DynamoDBLocal.jar"]
-CMD ["-dbPath","/dynamodb_data"]
+#VOLUME /dynamodb_data
+RUN pwd
+RUN ls -la
+
+ENTRYPOINT ["/usr/local/openjdk-8/bin/java", "-Djava.library.path=/dynamodb/DynamoDBLocal_lib", "-jar", "/dynamodb/DynamoDBLocal.jar"]
