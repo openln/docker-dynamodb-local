@@ -42,4 +42,4 @@ RUN chmod -R ugo+rwx DynamoDBLocal_lib
 RUN pwd
 RUN ls -la
 
-ENTRYPOINT ["/usr/local/openjdk-8/bin/java", "-Djava.library.path=./DynamoDBLocal_lib", "-jar", "./DynamoDBLocal.jar"]
+ENTRYPOINT ["/usr/local/openjdk-8/bin/java", "-Djava.library.path=/dynamodb/DynamoDBLocal_lib", "-jar", "/dynamodb/DynamoDBLocal.jar"]
